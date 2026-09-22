@@ -1,0 +1,17 @@
+【主题】了解山东师范大学 · 统一身份认证与信息系统入口
+【来源】统一身份认证 http://authserver.sdnu.edu.cn/ ；教务处办事指南；教学信息服务平台 http://jwxt.sdnu.edu.cn/ ；研究生招生网与招生管理平台 http://yzks.sdnu.edu.cn/ ；财务处缴费通知；整理日期 2026-09-18
+【口径】官方公开页摘要，非学校盖章文件。
+
+统一认证与门户
+- 认证平台：http://authserver.sdnu.edu.cn/
+- 可通过学校主页“信息门户”登录后进入本科教务、直录播等业务。
+
+教务与研究生
+- 本科教学信息服务平台：http://jwxt.sdnu.edu.cn/
+- 教务处：http://www.bkjy.sdnu.edu.cn/
+- 研究生招生信息网：http://www.yjszs.sdnu.edu.cn/
+- 招生管理平台：http://yzks.sdnu.edu.cn/
+
+缴费
+- “山东师范大学财务处”微信公众号→缴费平台→学生缴费。
+- 勿向非官方人员透露账号与银行卡信息。

@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# 本地配置与用户上传
+backend/.env
+backend/data/uploads/
+
+# 前端
+frontend/node_modules/
+frontend/dist/
+
+# Qdrant 数据卷
+qdrant_storage/
+
+# 本机启动脚本
+start.sh

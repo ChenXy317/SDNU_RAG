@@ -1,0 +1,24 @@
+[project]
+name = "rag-backend"
+version = "0.1.0"
+description = "山东师范大学校园知识库问答"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.34",
+    "sqlalchemy>=2.0",
+    "pymysql>=1.1",
+    "cryptography>=44",
+    "pydantic-settings>=2.6",
+    "pyjwt>=2.10",
+    "bcrypt>=4.2",
+    "qdrant-client>=1.14",
+    "httpx>=0.28",
+    "langchain-text-splitters>=0.3",
+    "langchain-core>=0.3",
+    "python-multipart>=0.0.20",
+    "langchain-openai>=1.6.3",
+]
+
+[tool.uv]
+package = false

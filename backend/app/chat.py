@@ -55,7 +55,7 @@ def list_sessions(user: CurrentUserDep, db: DbDep) -> SessionList:
     rows = db.scalars(
         select(ChatSession)
         .where(ChatSession.user_id == user.id)
-        .order_by(ChatSession.updated_at.desc())
+        .order_by(ChatSession.updated_at.desc(), ChatSession.id.desc())
     ).all()
     return SessionList(items=[_session_out(row) for row in rows])
 
@@ -81,7 +81,7 @@ def get_session(session_id: str, user: CurrentUserDep, db: DbDep) -> SessionDeta
     messages = db.scalars(
         select(ChatMessage)
         .where(ChatMessage.session_id == row.id, ChatMessage.user_id == user.id)
-        .order_by(ChatMessage.created_at.asc())
+        .order_by(ChatMessage.created_at.asc(), ChatMessage.id.asc())
     ).all()
     return SessionDetail(
         id=row.id,

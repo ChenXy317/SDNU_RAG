@@ -45,7 +45,7 @@ async def ingest_file(
         raise HTTPException(status_code=400, detail="第一版只接收 .txt")
     raw = await file.read()
     try:
-        text = raw.decode("utf-8")
+        text = raw.decode("utf-8-sig")
     except UnicodeDecodeError as exc:
         raise HTTPException(status_code=400, detail="仅支持 UTF-8 编码的 txt") from exc
     dest_dir = settings.upload_root / user.id

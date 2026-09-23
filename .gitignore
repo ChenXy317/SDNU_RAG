@@ -16,5 +16,7 @@ frontend/dist/
 # Qdrant 数据卷
 qdrant_storage/
 
-# 本机启动脚本
-start.sh
+# 编辑器与本机临时文件
+.idea/
+*.log
+/tmp/rag-project/

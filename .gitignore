@@ -16,6 +16,9 @@ frontend/dist/
 # Qdrant 数据卷
 qdrant_storage/
 
+# 个人说明文档，不进仓库
+说明.md
+
 # 编辑器与本机临时文件
 .idea/
 *.log

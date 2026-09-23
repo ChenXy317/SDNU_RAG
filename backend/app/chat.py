@@ -50,6 +50,20 @@ def _own_session(db, session_id: str, user_id: str) -> ChatSession:
     return row
 
 
+def _recent_history(db, session_id: str, user_id: str, current_question: str) -> list[tuple[str, str]]:
+    """当前会话最近 20 轮对话，不含本次提问。"""
+    rows = db.scalars(
+        select(ChatMessage)
+        .where(ChatMessage.session_id == session_id, ChatMessage.user_id == user_id)
+        .order_by(ChatMessage.created_at.desc(), ChatMessage.id.desc())
+        .limit(41)
+    ).all()
+    items = [(row.role, row.content) for row in reversed(rows)]
+    if items and items[-1][0] == "user" and items[-1][1] == current_question:
+        items = items[:-1]
+    return items[-40:]
+
+
 @router.get("/sessions", response_model=SessionList)
 def list_sessions(user: CurrentUserDep, db: DbDep) -> SessionList:
     rows = db.scalars(
@@ -130,6 +144,7 @@ async def chat_stream(body: ChatRequest, user: CurrentUserDep, db: DbDep):
     session_id = session.id
     user_id = user.id
     question = body.message
+    history = _recent_history(db, session_id, user_id, question)
 
     try:
         hits = retrieve(question, user_id)
@@ -158,7 +173,7 @@ async def chat_stream(body: ChatRequest, user: CurrentUserDep, db: DbDep):
             yield sse("citation", item)
         parts: list[str] = []
         try:
-            async for text in stream_answer(context, question, user_id):
+            async for text in stream_answer(context, question, user_id, history):
                 parts.append(text)
                 yield sse("token", {"text": text})
             answer = "".join(parts)

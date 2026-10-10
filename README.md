@@ -19,7 +19,7 @@
 
 检索不经过 LangChain。公共库和当前用户的私有库要分开查再合并，所以直接用 `qdrant-client`。
 
-向量和对话是两条链路。向量固定走本机 Ollama。对话默认是本机 Ollama `/v1` 上的 `qwen2.5:1.5b`，页面上可以换成任意 OpenAI 兼容地址。只换对话模型不用重建向量库；换 embedding 模型必须重建集合并重新灌入。
+向量和对话是两条链路。向量固定走本机 Ollama。对话默认是 `https://ollama.com/v1` 上的 `gemma4:31b-cloud`，页面上可以换成任意 OpenAI 兼容地址。只换对话模型不用重建向量库；换 embedding 模型必须重建集合并重新灌入。
 
 ## 实现了什么
 

@@ -107,13 +107,13 @@ onMounted(load)
       </a-descriptions>
       <a-form layout="vertical" style="margin-top: 16px" @finish="() => save(false)">
         <a-form-item label="base_url" required>
-          <a-input v-model:value="form.base_url" placeholder="http://127.0.0.1:11434/v1" />
+          <a-input v-model:value="form.base_url" placeholder="https://ollama.com/v1" />
         </a-form-item>
         <a-form-item label="api_key" extra="不填表示保持原值。本机 Ollama 可以不填。">
           <a-input-password v-model:value="form.api_key" placeholder="不修改请留空" />
         </a-form-item>
         <a-form-item label="model" required>
-          <a-input v-model:value="form.model" placeholder="qwen2.5:1.5b" />
+          <a-input v-model:value="form.model" placeholder="gemma4:31b-cloud" />
           <div v-if="current?.local_models.length" class="models">
             <span class="hint">本机 Ollama：</span>
             <a-button v-for="name in current.local_models" :key="name" size="small" @click="form.model = name">

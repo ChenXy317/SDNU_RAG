@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://127.0.0.1:11434"
     ollama_embedding_model: str = "qwen3-embedding:0.6b"
     ollama_embedding_dim: int = 1024
-    ollama_chat_model: str = "qwen2.5:1.5b"
-    chat_base_url: str = ""
+    ollama_chat_model: str = "gemma4:31b-cloud"
+    chat_base_url: str = "https://ollama.com/v1"
     chat_api_key: str = ""
     jwt_secret: str
     jwt_expire_hours: int = 12

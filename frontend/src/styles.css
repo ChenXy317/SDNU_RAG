@@ -39,8 +39,9 @@ body {
 }
 
 .app-shell {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
   background: transparent;
 }
 
@@ -48,7 +49,15 @@ body {
   background: transparent;
 }
 
+.app-shell > .ant-layout {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
 .app-sider.ant-layout-sider {
+  height: 100%;
+  overflow: auto;
   background: color-mix(in srgb, var(--surface) 88%, #fff) !important;
   border-right: 1px solid var(--line);
   box-shadow: 8px 0 24px rgba(28, 25, 23, 0.03);
@@ -57,6 +66,7 @@ body {
 .app-sider .ant-layout-sider-children {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
 .brand-lockup {
@@ -120,6 +130,7 @@ body {
 }
 
 .app-header.ant-layout-header {
+  flex: 0 0 auto;
   height: 72px;
   line-height: normal;
   padding-inline: 28px;
@@ -177,6 +188,11 @@ body {
 }
 
 .app-content.ant-layout-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
   padding: 24px 28px 32px;
   background: transparent;
 }
@@ -201,20 +217,37 @@ body {
 .chat-grid {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   gap: 16px;
-  height: calc(100vh - 128px);
-  min-height: 520px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .chat-grid > .ant-card {
+  min-width: 0;
+  min-height: 0;
   height: 100%;
+  max-height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.chat-grid > .ant-card .ant-card-body {
+.chat-grid > .ant-card > .ant-card-head {
+  flex-shrink: 0;
+}
+
+.chat-grid > .ant-card > .ant-card-body {
   flex: 1;
   min-height: 0;
+  overflow: auto;
+}
+
+.chat-grid > .chat-main.ant-card > .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .chat-thread {
@@ -222,7 +255,6 @@ body {
   min-height: 0;
   overflow: auto;
   padding: 4px 4px 12px;
-  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -376,6 +408,7 @@ body {
 }
 
 .composer {
+  flex-shrink: 0;
   display: flex;
   align-items: flex-end;
   gap: 10px;
@@ -763,7 +796,8 @@ body {
   }
 
   .app-shell.is-mobile {
-    min-height: 100dvh;
+    height: 100dvh;
+    overflow: hidden;
   }
 
   .app-header.ant-layout-header {
@@ -798,8 +832,9 @@ body {
   .chat-grid,
   .chat-grid.is-mobile {
     grid-template-columns: 1fr;
-    height: calc(100dvh - 56px - 56px - 28px - env(safe-area-inset-bottom, 0px));
+    flex: 1;
     min-height: 0;
+    height: auto;
   }
 
   .chat-grid.is-mobile > .chat-main {
